@@ -1,8 +1,8 @@
 package errors
 
 import (
+	"encoding/json"
 	"fmt"
-	"k8s.io/kubernetes/staging/src/k8s.io/apimachinery/pkg/util/json"
 )
 
 type Error struct {
@@ -38,6 +38,8 @@ func (e *ErrBuilder) SetRaw(err error) *ErrBuilder {
 	e.Raw = err
 	if err != nil {
 		e.RawError = err.Error()
+	} else {
+		e.RawError = ""
 	}
 	return e
 }
