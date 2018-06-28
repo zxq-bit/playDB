@@ -8,7 +8,6 @@ type Raft interface {
 	Run(stopCh chan struct{}) error
 	Step(data []byte) (entry proto.Entry, e error)
 	Config() *proto.ReplicaConfig
-	// Split(splitCallback func(key []byte) (newStore store.Store, e error)) (newRaft Raft, e error) // TODO
 }
 
 type StateMachine interface {
